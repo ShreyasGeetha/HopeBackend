@@ -9,7 +9,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import path from 'path'
 
 dotenv.config();
-connectDB()
+//connectDB()
 
 const app = express();
 app.use(cors())
