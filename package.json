@@ -11,7 +11,7 @@
     "start": "node backend/server",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm start"
+    "heroku-postbuild": "npm install && npm start"
   },
   "keywords": [],
   "author": "",
