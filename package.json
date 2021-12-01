@@ -8,10 +8,7 @@
     ".next/cache"
   ],
   "scripts": {
-    "start": "node backend/server",
-    "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d",
-    "heroku-postbuild": "npm install && npm start"
+    "start": "node backend/server"    
   },
   "keywords": [],
   "author": "",
