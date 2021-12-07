@@ -18,7 +18,9 @@ console.log('No')
 // @desc Fetch single product
 // @route GET /api/products/:id
 // @access  public
+console.log('it comes here')
 router.route('/:id').get(getProductById)
+console.log('it comes here but not here')
 
 router.route('/:id').delete(protect, deleteProductById)
 export default router;

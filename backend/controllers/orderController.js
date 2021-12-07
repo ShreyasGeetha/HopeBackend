@@ -4,10 +4,13 @@ import Product from '../models/productModel.js'
 
 const updateProductVisibility = async (id) => {
   const product = await Product.findById(id)
+    console.log('which product is it', product)
+
     if (product) {
-      product.isVisible = true
+      product.isVisible = false
     }
   const UpdatedProduct = await product.save();
+   console.log('updated product', UpdatedProduct)
   return UpdatedProduct;
 }
 
@@ -34,7 +37,8 @@ const createOrder = asyncHandler(async (req, res) => {
       orderItems,      
     })
   const createdOrder = await orders.save();
-  res.status(201)
+    res.status(201)
+    console.log('am i in the correct file',createdOrder)
     if (createdOrder) {
       const res = await updateProduct(orderItems)
     }

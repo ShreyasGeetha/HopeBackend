@@ -8,8 +8,17 @@ import { uploadFileToS3 } from '../s3.js';
 const getProducts = asyncHandler( async (req, res) => {
   //All mongoose methods return a promise - either use then or await
   // console.log('product req comes?')
-  const products = await Product.find({}); //{} will get all the objects
-  // console.log('does it process', products)
+
+  console.log('keyword search', req.query)
+  const keyword = req.query.keyword ? {
+    name: {
+      $regex: req.query.keyword,
+      $options: 'i'
+    }
+  } : {}
+  console.log('the keyword is', keyword)
+  const products = await Product.find({...keyword}); //{} will get all the objects
+  console.log('products list', products)
   res.json(products)
 })
 
@@ -44,7 +53,7 @@ const uploadProductImageToS3 = asyncHandler(async (req, res) => {
 // @access  public
 const getProductById = asyncHandler( async (req, res) => {
   const product = await Product.findById(req.params.id)
-
+  console.log('Product details fetch at server level', req)
   if (product) {    
     res.json(product)    
   } else {
