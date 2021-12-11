@@ -32,8 +32,7 @@ const authUser = asyncHandler( async (req, res) => {
 // @access  public
 const registerUser = asyncHandler( async (req, res) => {
   const { name, email, password } = req.body;
-  const image = 'https://hope-product-profile-images.s3.ap-southeast-1.amazonaws.com/userprofileplaceholder.jpg'
-
+  const image = 'https://hope-product-profile-images.s3.ap-southeast-1.amazonaws.com/userprofileplaceholder.jpg';
   const userExists = await User.findOne({ email })
 
   if (userExists) {
@@ -44,8 +43,7 @@ const registerUser = asyncHandler( async (req, res) => {
   const user = await User.create({
     name,
     email,
-    password,
-    image
+    password
   })
 //s3setup - aws user name
   if (user) {
@@ -55,7 +53,6 @@ const registerUser = asyncHandler( async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      image: user.image,
       token: generateToken(user._id)
     })
   } else {
@@ -81,7 +78,6 @@ const getUserProfile = asyncHandler( async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      image: user.image,
       isAdmin: user.isAdmin,      
     })
   } else {
