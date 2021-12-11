@@ -43,7 +43,8 @@ const registerUser = asyncHandler( async (req, res) => {
   const user = await User.create({
     name,
     email,
-    password
+    password,
+    image
   })
 //s3setup - aws user name
   if (user) {
@@ -52,6 +53,7 @@ const registerUser = asyncHandler( async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      image: user.image,
       isAdmin: user.isAdmin,
       token: generateToken(user._id)
     })
@@ -78,6 +80,7 @@ const getUserProfile = asyncHandler( async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      image: user.image,
       isAdmin: user.isAdmin,      
     })
   } else {
