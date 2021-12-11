@@ -8,7 +8,7 @@
     ".next/cache"
   ],
   "scripts": {
-    "start": "node backend/server"    
+    "start": "nodemon backend/server"    
   },
   "keywords": [],
   "author": "",
